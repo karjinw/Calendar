@@ -1,0 +1,16 @@
+trigger:
+  branches:
+    include:
+      - New-Styles
+
+jobs:
+  - job: BuildAndDeploy
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: npm install
+        displayName: 'Install dependencies'
+      - script: npm run build
+        displayName: 'Build project'
+      - script: npm run deploy
+        displayName: 'Deploy project'
